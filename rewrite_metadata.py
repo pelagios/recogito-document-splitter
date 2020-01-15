@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 new_docid = ''.join(random.choices(string.ascii_lowercase + string.digits, k = 14))
 old_partid = args.k
-new_partid = uuid.uuid4()
+new_partid = str(uuid.uuid4())
 
 with open('./original/metadata.json', 'r') as infile, \
   open(f'./original/metadata.{new_partid}.json', 'w') as outfile:
@@ -27,6 +27,10 @@ with open('./original/metadata.json', 'r') as infile, \
 
   # Filter parts
   meta['parts'] = list(filter(lambda p: p['id'] == old_partid, meta['parts']))
+
+  # Replace part ID and filename
+  meta['parts'][0]['id'] = new_partid
+  meta['parts'][0]['file'] = f'{new_partid}.xml'
   
   outfile.write(f'{json.dumps(meta, indent=2)}')
 
