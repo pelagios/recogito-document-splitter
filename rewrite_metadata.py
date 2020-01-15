@@ -45,4 +45,4 @@ with open('./original/metadata.json', 'r') as infile, \
 
   print()
   print('Rewrite annotations with:')
-  print(f'python rewrite_annotations -d {new_docid} -o {args.k} -n {new_partid}')
+  print(f'python rewrite_annotations.py -d {new_docid} -o {args.k} -n {new_partid}')
