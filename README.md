@@ -12,7 +12,7 @@ Functionality may evolve later, if this functionality turns out to be needed mor
 3. Manually edit the metadata
    - Remove all parts except the one you want to keep
    - Edit title and other metadata as needed
-   - Assign a new ID for the document (__TODO: generator script?__)
+   - Assign a new ID for the document (for convenience, run `python uuidgen.py`)
    - Assign a new UUID for the remaining document part and rename the document part file
 4. The tricky part: rewiring the annotations
    - __TODO: can only be handled via a script!__
