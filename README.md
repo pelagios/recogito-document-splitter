@@ -14,5 +14,13 @@ Functionality may evolve later, if this functionality turns out to be needed mor
    - Edit title and other metadata as needed
    - Assign a new ID for the document (for convenience, run `python uuidgen.py`)
    - Assign a new UUID for the remaining document part and rename the document part file
+     (for convenience, run `python docidgen.py`)
 4. The tricky part: rewiring the annotations
-   - __TODO: can only be handled via a script!__
+   - The `rewrite_annotations` utility will filter the original annotations.jsonl file, 
+     so that only those for the relevant part are kept, and will rewrite all IDs (document,
+     part, annotation, version) as needed
+   - Run the utility like so: 
+   
+```
+python rewrite_annotations -d {new doc ID} -o {old part UUID} -n {new part UUID}
+```
