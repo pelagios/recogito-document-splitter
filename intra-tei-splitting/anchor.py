@@ -18,10 +18,12 @@ class Anchor:
 
   def isWithin(self, from_chapter, from_para, to_chapter, to_para):
     # Chapter is path segment 6, section path segment 7
-    self.from_path[6] >= from_chapter and \
-    self.from_path[7] >= from_para and \
-    self.to_path[6] <= to_chapter and \
-    self.to_path[7] <= to_para
+    is_within = self.from_path[6] >= from_chapter and \
+      self.from_path[7] >= from_para and \
+      self.to_path[6] <= to_chapter and \
+      self.to_path[7] <= to_para
+
+    return is_within
 
   def isValid(self):
-    self.start.find('/') > -1 and self.end.find('/') > -1
+    return self.start.find('/') > -1 and self.end.find('/') > -1

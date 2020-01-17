@@ -10,9 +10,9 @@ TO_PARA = 2
 def isWithin(annotation, from_chapter, from_para, to_chapter, to_para):
   anchor = Anchor(annotation['anchor'])
   if anchor.isValid():
-    anchor.isWithin(from_chapter, from_para, to_chapter, to_para)
+    return anchor.isWithin(from_chapter, from_para, to_chapter, to_para)
   else:
-    False
+    return False
 
 with open('./original/annotations.jsonl', 'r') as infile:
 
