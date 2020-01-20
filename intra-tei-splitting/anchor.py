@@ -66,9 +66,9 @@ class Anchor:
     else: 
       offset_start_chapter = self.from_path[6] - chapter
       offset_start_section = self.from_path[7] - section if self.from_path[6] - chapter == 1 else self.from_path[7]
-      char_start = self.start.split('::')[1]
+      char_start = int(self.start.split('::')[1])
 
       offset_end_chapter = self.to_path[6] - chapter
       offset_end_section = self.to_path[7] - section if self.to_path[6] - chapter == 1 else self.to_path[7]
-      char_end = self.end.split('::')[1]
+      char_end = int(self.end.split('::')[1])
       return f'from=/TEI[1]/text[1]/body[1]/div[1]/div[1]/div[{offset_start_chapter}]/div[{offset_start_section}]/p[1]::{char_start};to=/TEI[1]/text[1]/body[1]/div[1]/div[1]/div[{offset_end_chapter}]/div[{offset_end_section}]/p[1]::{char_end}'
