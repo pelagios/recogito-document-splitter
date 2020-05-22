@@ -2,14 +2,16 @@ from anchor import Anchor
 import json
 import uuid
 
-DOC_ID = 'q25vx8179944yk'
-PART_ID = 'a85d9290-75e3-4917-aa71-ab2b87913dee'
+DOC_ID = 'r7v03z1i8vw0ag'
+PART_ID = '55dce983-015b-446f-b759-f38087047fc2'
 
-FROM_CHAPTER = 11
-FROM_PARA = 4
+FROM_CHAPTER = 39
+FROM_PARA = 1
 
-TO_CHAPTER = 15
-TO_PARA = 7
+TO_CHAPTER = 44
+TO_PARA = 10
+
+OFFSET_CHAPTER = 38
 
 def isWithin(annotation, from_chapter, from_para, to_chapter, to_para):
   anchor = Anchor(annotation['anchor'])
@@ -18,8 +20,8 @@ def isWithin(annotation, from_chapter, from_para, to_chapter, to_para):
   else:
     return False
 
-with open('./original/annotations_kyriakis_second_doc.jsonl', 'r') as infile, \
-  open(f'./original/annotations.{PART_ID}.jsonl', 'w') as outfile:
+with open('./output/annotations_original.jsonl', 'r') as infile, \
+  open(f'./output/annotations.{PART_ID}.jsonl', 'w') as outfile:
 
   all_annotations = infile.readlines()
   print(f'Read {len(all_annotations)} annotations total')
@@ -32,7 +34,7 @@ with open('./original/annotations_kyriakis_second_doc.jsonl', 'r') as infile, \
     # Assign new annotation- and version-UUID
     annotation['annotation_id'] = str(uuid.uuid4())
     annotation['version_id'] = str(uuid.uuid4())
-    annotation['anchor'] = Anchor(annotation['anchor']).offset_by(10, 3)
+    annotation['anchor'] = Anchor(annotation['anchor']).offset_by(OFFSET_CHAPTER, 0)
 
     # Replace doc & part ID
     annotation['annotates']['document_id'] = DOC_ID
